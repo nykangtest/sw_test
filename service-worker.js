@@ -65,7 +65,8 @@ self.addEventListener('activate', function(event) {
       // After the activation and claiming is complete, send a message to each of the controlled
       // pages letting it know that it's active.
       // This will trigger navigator.serviceWorker.onmessage in each client.
-      return self.clients.matchAll().then(function(clients) {
+      //return self.clients.matchAll().then(function(clients) {
+      return self.clients.matchAll({type: 'wearable'}).then(function(clients) {
         return Promise.all(clients.map(function(client) {
           return client.postMessage('The service worker has activated and ' +
             'taken control.');
@@ -123,6 +124,12 @@ self.addEventListener('message', function(event) {
             error: success ? null : 'Item was not found in the cache.'
           });
         });
+        break;
+        
+      case 'open':
+         event.ports[0].postMessage({
+            error: null
+          });
         break;
 
       default:
