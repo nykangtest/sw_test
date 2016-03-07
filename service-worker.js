@@ -125,6 +125,12 @@ self.addEventListener('message', function(event) {
           });
         });
         break;
+        
+      case 'open':
+         event.ports[0].postMessage({
+            error: null
+          });
+        break;
 
       default:
         // This will be handled by the outer .catch().
