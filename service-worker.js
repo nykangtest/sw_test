@@ -71,7 +71,7 @@ self.addEventListener('activate', function(event) {
         clients.forEach(function(client) {
           return client.postMessage('The service worker has activated and ' +
             'taken control.');
-        };
+        });
       });
     })
   );
