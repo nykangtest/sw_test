@@ -18,7 +18,7 @@ function showCommands() {
  //     ChromeSamples.setStatus('Deleted from cache.');
  //   }).catch(ChromeSamples.setStatus); // If the promise rejects, show the error.
  // });
-   document.querySelector('#delete').addEventListener('click', function() {
+   document.querySelector('#open').addEventListener('click', function() {
     sendMessage({
       command: 'open',
       url: document.querySelector('#url').value
