@@ -9,13 +9,22 @@ function showCommands() {
     }).catch(ChromeSamples.setStatus); // If the promise rejects, show the error.
   });
 
-  document.querySelector('#delete').addEventListener('click', function() {
+ //document.querySelector('#delete').addEventListener('click', function() {
+ //   sendMessage({
+ //     command: 'delete',
+ //     url: document.querySelector('#url').value
+ //   }).then(function() {
+ //     // If the promise resolves, just display a success message.
+ //     ChromeSamples.setStatus('Deleted from cache.');
+ //   }).catch(ChromeSamples.setStatus); // If the promise rejects, show the error.
+ // });
+   document.querySelector('#delete').addEventListener('click', function() {
     sendMessage({
-      command: 'delete',
+      command: 'open',
       url: document.querySelector('#url').value
     }).then(function() {
       // If the promise resolves, just display a success message.
-      ChromeSamples.setStatus('Deleted from cache.');
+      ChromeSamples.setStatus('Open url from Gear.');
     }).catch(ChromeSamples.setStatus); // If the promise rejects, show the error.
   });
 
