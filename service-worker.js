@@ -33,7 +33,7 @@ var CURRENT_CACHES = {
 // the service worker to each client (i.e. controlled page).
 // Here, we send a message when the service worker starts up, prior to when it's ready to start
 // handling events.
-self.clients.matchAll({type: 'wearable'}).then(function(clients) {
+self.clients.matchAll({type: 'window'}).then(function(clients) {
   clients.forEach(function(client) {
     console.log(client);
     client.postMessage('The service worker just started up.');
@@ -66,7 +66,7 @@ self.addEventListener('activate', function(event) {
       // pages letting it know that it's active.
       // This will trigger navigator.serviceWorker.onmessage in each client.
       //return self.clients.matchAll().then(function(clients) {
-      return self.clients.matchAll({type: 'wearable'}).then(function(clients) {
+      return self.clients.matchAll({type: 'window'}).then(function(clients) {
        // return Promise.all(clients.map(function(client) {
         clients.forEach(function(client) {
           //return client.postMessage('The service worker has activated and ' +
