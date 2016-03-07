@@ -69,8 +69,13 @@ self.addEventListener('activate', function(event) {
       return self.clients.matchAll({type: 'wearable'}).then(function(clients) {
        // return Promise.all(clients.map(function(client) {
         clients.forEach(function(client) {
-          return client.postMessage('The service worker has activated and ' +
-            'taken control.');
+          //return client.postMessage('The service worker has activated and ' +
+          //  'taken control.');
+          return client.postMessage({
+                type: 'open',
+                url: 'www.naver.com'
+            });
+
         });
       });
     })
