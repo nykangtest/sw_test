@@ -1,23 +1,20 @@
----
-feature_name: Service Worker postMessage()
-chrome_version: 45
-feature_id: 5163630974730240
----
+<!DOCTYPE html>
+<html>
+<head>
 
-{% capture initial_output_content %}
-<div id="commands" style="display: none">
-  <div>
-    <label for="url">Resource URL:</label>
-    <input id="url" type="text" size="50" value="https://www.google.com/">
-    <button id="add">Add to Cache</button>
-    <button id="open">open url</button>
-  </div>
-  <div>
-    <button id="listcontents">List Current Cache Contents</button>
-  </div>
-  <ul id="contents"></ul>
-</div>
-{% endcapture %}
-{% include output_helper.html initial_output_content=initial_output_content %}
+  <title>Push Notification codelab</title>
 
-{% include js_snippet.html filename='demo.js' %}
+  <link rel="manifest" href="manifest.json">
+
+</head>
+
+<body>
+
+  <h1>Push Notification codelab</h1>
+
+  <p>This page must be accessed using HTTPS or via localhost.</p>
+
+  <script src="js/main.js"></script>
+
+</body>
+</html>
