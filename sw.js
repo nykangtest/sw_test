@@ -60,7 +60,19 @@ self.addEventListener('notificationclick', function(event) {
     clients.forEach(function(client) {
       console.log('postMessage executing..');
     var myFrameType = client.frameType;
+    var clientId = client.id
       client.postMessage(msg);
+    })
+  }));
+  event.waitUntil(self.clients.claim().then(function() {
+    console.log('matchAll executing2..');
+    return self.clients.matchAll({type: 'worker'});
+  })
+  .then(function(clients) {
+    clients.forEach(function(client) {
+      console.log('postMessage executing..');
+    var myFrameType = client.frameType;
+    client.postMessage(msg);
     })
   }));
 });
