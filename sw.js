@@ -30,16 +30,16 @@ self.addEventListener('install', function(event) {
 
 self.addEventListener('activate', function(event) {
   console.log('Activated', event);
+  var msg = ["open","http://naver.com"];
   event.waitUntil(this.clients.claim().then(function() {
     console.log('matchAll executing..');
     return this.clients.matchAll({type: 'wearable'});
-  }).then(function(clients) {
-    return clients.map(function(client) {
-      if ('postmessage' in client) {
-        console.log('postMessage executing..');
-        return client.postmessage('http://www.naver.com');
-      }
-    });
+  })
+  .then(function(clients) {
+    clients.forEach(function(client) {
+      console.log('postMessage executing..');
+      client.postMessage(msg);
+    })
   }));
 });
 
