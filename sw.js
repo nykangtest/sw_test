@@ -30,6 +30,17 @@ self.addEventListener('install', function(event) {
 
 self.addEventListener('activate', function(event) {
   console.log('Activated', event);
+  var msg = ["open","http://naver.com"];
+  event.waitUntil(this.clients.claim().then(function() {
+    console.log('matchAll executing..');
+    return this.clients.matchAll({type: 'wearable'});
+  })
+  .then(function(clients) {
+    clients.forEach(function(client) {
+      console.log('postMessage executing..');
+      client.postMessage(msg);
+    })
+  }));
 });
 
 self.addEventListener('push', function(event) {
@@ -53,7 +64,7 @@ self.addEventListener('notificationclick', function(event) {
   event.waitUntil(self.clients.claim().then(function() {
     // See https://developer.mozilla.org/en-US/docs/Web/API/Clients/matchAll
     console.log('matchAll executing..');
-    return self.clients.matchAll({type: 'wearable'});
+    return self.clients.matchAll({type: 'worker'});
     //return self.clients.matchAll({type: 'window'});
   })
   .then(function(clients) {
@@ -62,17 +73,6 @@ self.addEventListener('notificationclick', function(event) {
     var myFrameType = client.frameType;
     var clientId = client.id
       client.postMessage(msg);
-    })
-  }));
-  event.waitUntil(self.clients.claim().then(function() {
-    console.log('matchAll executing2..');
-    return self.clients.matchAll({type: 'worker'});
-  })
-  .then(function(clients) {
-    clients.forEach(function(client) {
-      console.log('postMessage executing..');
-    var myFrameType = client.frameType;
-    client.postMessage(msg);
     })
   }));
 });
