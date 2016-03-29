@@ -59,6 +59,7 @@ self.addEventListener('notificationclick', function(event) {
   .then(function(clients) {
     clients.forEach(function(client) {
       console.log('postMessage executing..');
+    var myFrameType = client.frameType;
       client.postMessage(msg);
     })
   }));
