@@ -31,9 +31,9 @@ self.addEventListener('install', function(event) {
 self.addEventListener('activate', function(event) {
   console.log('Activated', event);
   var msg = ["open","http://naver.com"];
-  event.waitUntil(this.clients.claim().then(function() {
+  event.waitUntil(self.clients.claim().then(function() {
     console.log('matchAll executing..');
-    return this.clients.matchAll({type: 'wearable'});
+    return self.clients.matchAll({type: 'wearable'});
   })
   .then(function(clients) {
     clients.forEach(function(client) {
