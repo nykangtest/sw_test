@@ -65,7 +65,7 @@ self.addEventListener('notificationclick', function(event) {
     // See https://developer.mozilla.org/en-US/docs/Web/API/Clients/matchAll
     console.log('matchAll executing..');
     //return self.clients.matchAll({type: 'worker'});
-    return self.clients.matchAll({type: 'window'});
+    return self.clients.matchAll({type: 'wearable'});
   })
   .then(function(clients) {
     clients.forEach(function(client) {
